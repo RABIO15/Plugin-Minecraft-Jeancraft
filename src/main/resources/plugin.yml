@@ -1,0 +1,15 @@
+name: s
+version: 1.0
+main: fr.rabio.jeanCraftCore.Main
+api-version: '1.21'
+description: Le plugin de Jean Craft
+commands:
+  chat:
+    description: Une commande de test
+    usage: /chat
+  quizz:
+    description: commande de quizz
+    usage: /quizz
+  classement:
+    description: commande pour connaitre le classement des joueurs
+    usage: /classement
