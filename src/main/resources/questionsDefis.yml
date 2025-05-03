@@ -1,0 +1,27 @@
+Defis1:
+  Q1:
+    - material: DIAMOND
+      question: "Combien font 4/0"
+      answers: ["craaa", "cratpo"]
+
+
+  Q11:
+    - material: GOLD_INGOT
+      questionDefis: "combien font 4x4"
+      answers: ["crapi", "crapiot", "1eee"]
+
+  Q111:
+    - material: GOLD_INGOT
+      question: "Combien à de sommet un rectangle"
+      answers: ["mp", "8ed", "2zz","jsep"]
+REPONSE:
+  question: ["Paris","craaa","crapi", "mp","Victor Hugo","Berlin","Impossible","16","4","Quadriceptese","H2O","Christophe Colomb","Inflation",
+             "Accident du travail","Photosynthèse","Cat","12","calculer un rectancle carée"
+
+
+  
+  ]
+MATIERSCOLAIRE:
+  scolaire: ["Defis1","craaa","crapi","Histoire","Math","Physique-Chimie","Economie","Svt","Anglais","Sport","Musique","Espagnol","Prévention-santé"]
+
+
