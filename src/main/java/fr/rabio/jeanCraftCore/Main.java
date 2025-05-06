@@ -56,7 +56,7 @@ public class Main extends JavaPlugin {
        // PluginCommand quizzCommand = Objects.requireNonNull(getCommand("quizz"), "La commande 'quizz' n'est pas définie dans plugin.yml !");
         //quizzCommand.setExecutor(new QuizzCommand(this));
    
-
+  
 
 
 
@@ -67,34 +67,6 @@ public class Main extends JavaPlugin {
 
 loadPlayerData();
 
-    /*
-
-
-       Pour la prochaine fois bug avec la commande quizz qui ne veut pas marcher donc ce que j'ai fait c'est bien verifi
-       le plugin yml j'ai modifie le paper mais toujoiurs rien la je vais crée une commande caca pour voir si  elle marche
-       mais de ce que je vois meme sans rien il est en jaune donc a mon avis cela ne vien pas de la command quizz directement
-                ou des autre commandes mais de autre chose d'autre 29/01/2025
-                
-                */
-       
-        
-         
-       /*
-       Alors ce que je fais c'est mofifier la version qui etait end e 1.20.4 dans le build grandle en 1.21
-       aussii dans la classe main j'ai fait en sorte de faire autrement pour charger le commande
-       j'ai regarder si c'est pas du dossier ressource mais non j'ai bien verifier le paper plugin et le plugin yml
-       mais rien de nouveau truc a faire poour la  prochaine fois alors tester voir si cela marche ou pas sinon voir en detrail
-       la  classe commande qui fait chier ou regarder sur internet sinon trafic dans project structure eet ou crée un nouvel commande pour mieu commprendre
-       le soucis 01/02/2025
-
-
-
-
-
-        */
-       
-        
-        
     }
 
     @Override

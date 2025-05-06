@@ -117,7 +117,7 @@ public class QuestionLoader {
         String path = subject + "." + questionId; // Chemin dans la configuration pour accéder aux questions
         List<Map<?, ?>> configDQuestions = configD.getMapList(path); // Récupère la liste des questions
 
-
+/*
 
         player.sendMessage("§4____INFORMATION COMPLAIMENTAIRE_____");
         player.sendMessage("                                                " );
@@ -135,16 +135,19 @@ public class QuestionLoader {
 
 
 
+ player.sendMessage("§6____appel de la premier fonction getquestiondefis____");
 
 
 
-
-            player.sendMessage("§6____appel de la premier fonction getquestiondefis____");
+   */
 
         if (configDQuestions.isEmpty()) { // Si aucusssssssne question n'est trouvée, retourne une liste vide
-            player.sendMessage("§4_____ ECHECde la  fonction getquestiondefis_______");
-            player.sendMessage("§6________Il retourne"+ questionsD + "_______");
+            player.sendMessage("§4_____ ECHEC" + questionsD);
+
             return questionsD;
+        }else{
+            player.sendMessage(" Tout va bien " + questionsD);
+
         }
 
         // Parcours des questions trouvées dans la configuration
@@ -153,7 +156,7 @@ public class QuestionLoader {
                 String questionDD = (String) questionDMap.get("question"); // Récupère la question
                 List<String> answers = (List<String>) questionDMap.get("answers"); // Récupère les réponses associées
                 questionsD.add(new AbstractMap.SimpleEntry<>(questionDD, answers));
-                player.sendMessage("§6________Ajout dans la liste________");
+                player.sendMessage("§6________Ajout list");
                 // Ajoute la question et les réponses à la liste
             } catch (Exception e) {
                 player.sendMessage("___Erreur lors du chargement des questions.___"); // En cas d'erreur, log un message

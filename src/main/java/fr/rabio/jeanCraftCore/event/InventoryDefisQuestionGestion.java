@@ -136,7 +136,12 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 //le probléme tu fais que j'arrive pas aller plus que la premier question au inventaire defis vien de la 19/04/25
         }else {
-            player.sendMessage("§4 GET OUTTT !!!!!!!" + subject);
+            player.sendMessage("§9 Non");
+
+            if(!ByPass_NextQuestionIsEmpty ) {
+                player.sendMessage("§4 Le Bypass esdt sur false !! et subject is : " + subject);
+            }
+
             //en grois elle verifi quye si lobject selectionner  a pas le nom de la  matier et bah elle va  la redéfinir si elle vient d'un pnj
             if(!ReponseMatier.contains(subject)) {
 
@@ -157,11 +162,14 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 
     if(ByPass_NextQuestionIsEmpty) {
-    player.sendMessage("§1 bypassnextquestionisemty est sur trueeeeee");
+
+
+    player.sendMessage("§1 bypassnextquestionisemty est sur truee");
     //y a un truc avec le subject qui mal redéfini après faut faire des tester 24/04/25
-    player.sendMessage("Le subject et " + subject);
+    player.sendMessage("Le subject et ))" + subject);
 
     List<Map.Entry<String, List<String>>> nextQuestions = questionLoader.getQuestionsDefis(subject,"Q1",player);
+        player.sendMessage("§b NextQuestionn initier 1 er " );
 
     if (!nextQuestions.isEmpty()) {
 
@@ -171,40 +179,62 @@ public class InventoryDefisQuestionGestion implements Listener {
         if (!hasCompletedQuiz(player, subject)) {
 
             complete = 1;
-            player.sendMessage("Le subject et " + subject);
+            player.sendMessage("Le subject et$$ " + subject);
 
 
             Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(0); // Récupère la première question
 
 
            //y a     peut etre un truc 01/05/25 verifier avec lautre classe
-            CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player); //on instancie la classe
-                     player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
+            player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
+
+            CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
+
+            //on instancie la classe
+            player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
 
             df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
-            player.sendMessage("Le subject et " + subject);
 
-            ByPass_NextQuestionIsEmpty = false;
+            player.sendMessage("L'inventaire à til etait crée?  " );
+            player.sendMessage("§4 le Q_q est " +  Q_q);
+
+           // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
 
 
         } else {
+            player.sendMessage("Vous avez d..éjà fait ce quizz............ ");
+
             GestionInvetory gstinv = new GestionInvetory(main, player);
 
 
             gstinv.On_Inventory_Difficult(player);
             player.closeInventory();
+            //je crois on tien un truc par la de gros qui fous la merde qui ferme l'inventaire mais il se reouvrte un truc du genre
+            //ce qui fous la merde a regarder 04/05/25
+
             player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+            player.sendMessage("Vous avez déjà fait ce quizz ");
+
             player.sendMessage("Le subject et " + subject);
             ByPass_NextQuestionIsEmpty = false;
+            player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false");
 
         }
+
+
+
         //player.sendMessage("§2 le truc s'appel attention :" + difficulté + "Notre sujet est" + subject);
     } else {
         player.sendMessage("Vous avez terminé toutes les questions !AAAAAAAAAAAAA");
 
         GestionInvetory gstinv = new GestionInvetory(main, player);
         ByPass_NextQuestionIsEmpty = false;
-
+        player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false**");
 
         player.closeInventory();
 
@@ -216,7 +246,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 }else{
 
-    player.sendMessage("La valeur BypasseNextquestionIsEmpty et sur false");
+    player.sendMessage(" La valeur BypasseNextquestionIsEmpty et sur false");
 }
 
 
@@ -260,7 +290,8 @@ public class InventoryDefisQuestionGestion implements Listener {
 
         int point = config.getInt(key + ".point",0);
 
-        player.sendMessage("---///----Le subject et " + subject);
+        player.sendMessage("---///----Le subject et [" + subject +"]");
+        player.sendMessage("§4 le Q_q est " +  Q_q);
 
         if(correctreponse.contains(itemName) ) {
             //si lobjet contien la bonne réponse et bien f  fffaire en sorte de ajouter 1 point et  apperler la fonction vérifier
@@ -269,15 +300,18 @@ public class InventoryDefisQuestionGestion implements Listener {
             player.sendMessage("Ceci est la Bonne réponse !" + point);
 
             Addition_fin += 1;
-
+            player.sendMessage("§4 le Q_q est " +  Q_q);
 
             vérification(player);
 
 
 
         }else {
+
+
             if(complete == 1){
                 player.sendMessage("§6 Aucun reponse bonne de détecter" );
+                player.sendMessage("§4 le Q_q est " +  Q_q);
 
                 vérification(player);
             }
@@ -341,34 +375,47 @@ public class InventoryDefisQuestionGestion implements Listener {
             if(Q_q == 1) {
                 player.sendMessage("Un ajout à été effectuer");
                 questionKeyBuilder.append('1');
-            }  
+                player.sendMessage("§4 le Q_q est " +  Q_q);
+            }else{
+                player.sendMessage("Petite erreur qui empeche l'ajout de 1 au Q11 ");
+                player.sendMessage("Le Q_q est sur  ["+ Q_q +"]");
+            }
 
-            player.sendMessage("////Le subject et " + subject);
+
+            player.sendMessage("§7 1er le suprem " + nextQuestionKey);
             nextQuestionKey = questionKeyBuilder.toString();
+
+            player.sendMessage("§7 1er le suprem " + nextQuestionKey);
             List<Map.Entry<String, List<String>>> nextQuestionss = questionLoader.getQuestionsDefis(subject,nextQuestionKey,player);
-            player.sendMessage("-------------mmm-------------" + nextQuestionKey);
+            player.sendMessage("NextQuestionkkey le truc qui rapport avec Q est : " + nextQuestionKey);
 
 
             if (!nextQuestionss.isEmpty()) {
                 player.sendMessage("////Le subject et " + subject);
-                player.sendMessage("Double verification reussi ahahahahah ");
+                player.sendMessage("Double verification reussi  ");
 
                 Map.Entry<String, List<String>> nextQuestion = nextQuestionss.get(0);
                 // Récupère la première question
                 CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
-                player.sendMessage("3 verfi" + nextQuestion.getKey() +"et  ....."+ nextQuestion.getValue());
+                player.sendMessage("3 verfi la key est " + nextQuestion.getKey() +"et  .la valeur est "+ nextQuestion.getValue());
 
                 df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
-                player.sendMessage("H" + nextQuestionKey);
+  
+
+                player.sendMessage("H" + nextQuestionKey);//il ets la fdp de merde de bug
                 player.sendMessage("3 verfi" + nextQuestion.getKey() +"et  ....."+ nextQuestion.getValue());
+
                 changingInventory.add(player);
                 complete = 1;
-                Q_q = 1;
+                Q_q += 1;
+                
+                //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc 
 
             }else {
 
                 player.sendMessage("Il ya eu un certain soucis  " + point);
+                player.sendMessage("§4 le Q_q est /////" +  Q_q);
 
                 questionKeyBuilder = new StringBuilder("Q1");
                 nextQuestionKey = questionKeyBuilder.toString();
@@ -416,17 +463,28 @@ public class InventoryDefisQuestionGestion implements Listener {
         changingInventory.remove(player);
         BlockQuestion(player, subject);
         player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+
         player.sendMessage("////Le subject et " + subject);
 
     }else{
         player.sendMessage("toujours non 2 ");
         player.sendMessage("////Le subject et " + subject);
     }
+            player.sendMessage("§4 appel de verfication et l'inventaire est vide  ");
+
 
         }
 
 
-
+            //verifier le return 04/05/25
+        player.sendMessage("Le return est " + nextQuestionKey + "qui correspond au truc Q1 / Q11 etc...");
         return nextQuestionKey;
     }
 
@@ -447,6 +505,17 @@ public class InventoryDefisQuestionGestion implements Listener {
         // Code à exécuter lorsque le joueur se déconnecte
         Player player = event.getPlayer();
         player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage("aie aiez aiezzzzzzz");
+
+
         reset(player);
 
     }
@@ -464,7 +533,17 @@ public class InventoryDefisQuestionGestion implements Listener {
         ByPass_NextQuestionIsEmpty = false;
         Addition_fin = 0;
         Q_q = 0;
-        player.sendMessage("Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+        player.sendMessage("§a Le reset c'est bien effectuer");
+
+
 // il faudra mettre un message de debug ici pour voir
 
 
@@ -505,6 +584,10 @@ public class InventoryDefisQuestionGestion implements Listener {
         ensurePlayerExists(player); // Vérifie que le joueur est bien enregistré
         String path = "players." + player.getUniqueId() + "." + subject ;
 
+
+        //peut être supprimer cette fonction elle pourrait deranger plus que elle sert a  quelque chose 04/05/25
+
+
         return playerData.getBoolean(path, false);
     }
 
@@ -514,7 +597,7 @@ public class InventoryDefisQuestionGestion implements Listener {
         String path = "players." + player.getUniqueId() + "." + subject;
         playerData.set(path, true);
         savePlayerData();
-
+  
 
     }
 
