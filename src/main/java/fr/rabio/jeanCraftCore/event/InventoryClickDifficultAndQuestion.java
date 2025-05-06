@@ -134,7 +134,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         if(ReponseMatier.contains(itemName)) {
         	 subject = itemName;
 
-             player.sendMessage("La matier est existante" + subject );
+             player.sendMessage("§a La matier est existante !!! " + subject );
         	
         	 
         	 
@@ -144,7 +144,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         }else {
             //en grois elle verifi quye si lobject selectionner  a pas le nom de la  matier et bah elle va  la redéfinir si elle vient d'un pnj
         	  if(!ReponseMatier.contains(subject)) {
-                  player.sendMessage("§4 La matier est pas existante" + subject );
+                  player.sendMessage("§4 La matier est pas existantoooo" + subject );
         	
         	if(ReponseMatier.contains(pnj.getMatier())) {
         		subject = pnj.getMatier();
@@ -367,7 +367,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
             if(complete == 1) {
                 player.sendMessage("The End");
 
-                reset();
+                reset(player);
                 changingInventory.remove(player);
                 BlockQuestion(player, subject, difficulté);
             }else{
@@ -387,8 +387,8 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     	Player player = (Player) event.getPlayer();
     	
     	if(changingInventory.contains(player)) {
-    	
-    	reset();
+
+    	reset(player);
     	}
     }
     
@@ -396,14 +396,14 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         // Code à exécuter lorsque le joueur se déconnecte
     	Player player = event.getPlayer();
-    	reset();
+    	reset(player);
       
     }
     
     
     
     
-    public void reset() {
+    public void reset(Player player) {
     	  questionKeyBuilder = new StringBuilder("Q1");
 		  nextQuestionKey = questionKeyBuilder.toString();
 		  difficulté = "";
@@ -411,6 +411,16 @@ public class InventoryClickDifficultAndQuestion implements Listener {
 		   pnj.SetMatier("");
 		   complete = 0;
            Addition_fin = 0;
+        player.sendMessage("BUAHHHHHH 1 ");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
+        player.sendMessage("§4 Le reset c'est bien effectuer");
 
 
 
@@ -451,6 +461,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     public boolean hasCompletedQuiz(Player player, String subject, String difficulty) {
         ensurePlayerExists(player); // Vérifie que le joueur est bien enregistré
         String path = "players." + player.getUniqueId() + "." + subject + "." + difficulty;
+        player.sendMessage("BUAHHHHHH 11 ");
         return playerData.getBoolean(path, false);
     }
 
@@ -461,6 +472,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
 
         playerData.set(path, true);
         savePlayerData();
+        player.sendMessage("BUAHHHHHH 111 ");
     }
 
     public void BlockQuestion(Player player,String sujet,String difficulté){
@@ -469,6 +481,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         ensurePlayerExists(player);
         markQuizCompleted(player,subject,difficulté);
         savePlayerData();
+        player.sendMessage("BUAHHHHHH 1111 ");
 
     }
 

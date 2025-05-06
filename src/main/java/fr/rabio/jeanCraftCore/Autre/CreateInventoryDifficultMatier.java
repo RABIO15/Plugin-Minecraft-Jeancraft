@@ -58,6 +58,9 @@ public class CreateInventoryDifficultMatier {
 
         // Ouvre l'inventaire personnalisé pour le joueur
         player.openInventory(inventory);
+        player.sendMessage("§b L'ouverturee de l'inventaire c'est bien effectuer avec succée ");
+
+
         // Une fois appelé, le joueur verra l'inventaire avec les options.
         // Exemple : Si question = "Quelle est la capitale de la France ?" et answers = ["Paris", "Lyon", "Marseille"],
         // le joueur verra un inventaire avec 3 papiers intitulés "Paris", "Lyon" et "Marseille".
