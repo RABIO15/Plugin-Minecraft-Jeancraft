@@ -1,9 +1,9 @@
 package fr.rabio.jeanCraftCore;
 
 
-import fr.rabio.jeanCraftCore.Autre.Scorboard;
 import fr.rabio.jeanCraftCore.commands.Classement;
 import fr.rabio.jeanCraftCore.event.*;
+import fr.rabio.jeanCraftCore.manager.ScoreBoardManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -26,61 +26,33 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
 
-
-
-        Scorboard scoreboard = new Scorboard(this);
+        ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this);
 
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                scoreboard.createScoreboard(player);
+                scoreBoardManager.createScoreboard(player);
             }
         }, 0L, 100L);
-
-
 
         //la classe principal
         ChangeDifficult changeDifficult = new ChangeDifficult();
         this.inventorypnj = new InventoryQuestionPnj(this,"");
         
         getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
-        
-      
-        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this,this.inventorypnj), this);  
-        
+        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this,this.inventorypnj), this);
         getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
         getServer().getPluginManager().registerEvents(this.inventorypnj, this);
         getServer().getPluginManager().registerEvents(new PassageClassrom(this),this);
-
         getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this,this.inventorypnj),this);
-
-       // PluginCommand quizzCommand = Objects.requireNonNull(getCommand("quizz"), "La commande 'quizz' n'est pas définie dans plugin.yml !");
+        // PluginCommand quizzCommand = Objects.requireNonNull(getCommand("quizz"), "La commande 'quizz' n'est pas définie dans plugin.yml !");
         //quizzCommand.setExecutor(new QuizzCommand(this));
-   
-  
-
-
-
         getCommand("quizz").setExecutor(new QuizzCommand(this));
-
         getCommand("classement").setExecutor(new Classement(this));
-
-
-loadPlayerData();
-
+        loadPlayerData();
     }
 
     @Override
-    public void onDisable() {
-
-    
-    	
-    	
-    	
-    	
-    	
-    	
-}
-
+    public void onDisable() {}
 
     public void loadPlayerData() {
         playerDataFile = new File(getDataFolder(), "player_data.yml");
@@ -90,28 +62,4 @@ loadPlayerData();
         }
         playerData = YamlConfiguration.loadConfiguration(playerDataFile);
     }
-
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
-
 }
-  
