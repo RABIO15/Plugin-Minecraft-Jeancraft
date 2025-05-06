@@ -375,6 +375,7 @@ public class InventoryDefisQuestionGestion implements Listener {
             if(Q_q == 1) {
                 player.sendMessage("Un ajout à été effectuer");
                 questionKeyBuilder.append('1');
+                
                 player.sendMessage("§4 le Q_q est " +  Q_q);
             }else{
                 player.sendMessage("Petite erreur qui empeche l'ajout de 1 au Q11 ");
@@ -396,6 +397,8 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                 Map.Entry<String, List<String>> nextQuestion = nextQuestionss.get(0);
                 // Récupère la première question
+
+
                 CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
                 player.sendMessage("3 verfi la key est " + nextQuestion.getKey() +"et  .la valeur est "+ nextQuestion.getValue());
