@@ -15,18 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Scorboard  implements Listener {
-
+    // Save jusqu'au prochain teste
     public Main main;
 
     public Scorboard(Main main){
         this.main = main;
 
     }
-
-
-
-
-
 
     public void createScoreboard(Player player) {
         File fileC = new File(main.getDataFolder(), "classement.yml");
@@ -67,7 +62,7 @@ int player_online = Bukkit.getOnlinePlayers().size();
         Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, ChatColor.GOLD + "___________");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-        // Ajjjjouter le nom et le classement du joueur
+        // Ajouter le nom et le classement du joueur
 
 
 
