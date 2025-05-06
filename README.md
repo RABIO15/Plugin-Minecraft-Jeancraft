@@ -1,4 +1,4 @@
-MineQuizz
+# MineQuizz
 
 MineQuizz est un plugin Minecraft qui permet d'organiser des quiz interactifs directement en jeu. Il est idéal pour divertir les joueurs, organiser des événements ou tester leurs connaissances sur divers sujets.
 
