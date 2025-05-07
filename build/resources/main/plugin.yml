@@ -1,12 +1,11 @@
-name: s
+name: MineQuizz
 version: 1.0
 main: fr.rabio.jeanCraftCore.Main
 api-version: '1.21'
 description: Le plugin de Jean Craft
+depend:
+  - LuckPerms
 commands:
-  chat:
-    description: Une commande de test
-    usage: /chat
   quizz:
     description: commande de quizz
     usage: /quizz

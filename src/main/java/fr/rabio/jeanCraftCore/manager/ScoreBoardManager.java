@@ -11,10 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.*;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class ScoreBoardManager implements Listener {
     public Main main;
@@ -59,23 +59,31 @@ public class ScoreBoardManager implements Listener {
         int player_online = Bukkit.getOnlinePlayers().size();
         // Création du scoreboard
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, "§d§lJeanCraft");
+        Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, "§f§lJeanCraft");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         User user = luckPerms.getUserManager().getUser(player.getUniqueId());
 
         // Ajouter le nom et le classement du joueur
-        Score nameLine = objective.getScore("§6§lName : §e" + player.getName());
+        String date = new SimpleDateFormat("dd/MM/yy").format(new Date());
+        Score dateline = objective.getScore("§7" + date);
+        dateline.setScore(8);
+        Score Emptyline1 = objective.getScore(" ");
+        Emptyline1.setScore(7);
+        String Userformated = user.getCachedData().getMetaData().getPrefix().replace("&", "§");
+        Score gradeline = objective.getScore("§fGrade : §r" + Userformated);
+        gradeline.setScore(6);
+        Score nameLine = objective.getScore("§fPseudo : §a" + player.getName());
         nameLine.setScore(5);
-        Score rankLine = objective.getScore("§6§lGrade : §r" + user.getCachedData().getMetaData().getPrefix());
-        rankLine.setScore(4);
-
-        Score playerLine = objective.getScore("§6§lStudents : §e" + player_online);
-        playerLine.setScore(3);
-
-        Score PointLine = objective.getScore("§6§lPoints :§e" + playerPoints);
-        PointLine.setScore(1);
-
-        Score ip = objective.getScore("§cplay.jeancraft.fr");
+        Score PointLine = objective.getScore("§fPoints : §a" + playerPoints);
+        PointLine.setScore(4);
+        Score Emptyline3 = objective.getScore("   ");
+        Emptyline3.setScore(3);
+        Score playerLine = objective.getScore("§fJoueurs : §a" + player_online);
+        playerLine.setScore(2);
+        Score Emptyline2 = objective.getScore("  ");
+        Emptyline2.setScore(1);
+        Score ipline = objective.getScore("§ejeancraft.fr");
+        ipline.setScore(0);
 
 
 
