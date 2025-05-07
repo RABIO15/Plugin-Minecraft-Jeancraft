@@ -4,12 +4,18 @@ package fr.rabio.jeanCraftCore;
 import fr.rabio.jeanCraftCore.commands.Classement;
 import fr.rabio.jeanCraftCore.event.*;
 import fr.rabio.jeanCraftCore.manager.ScoreBoardManager;
+<<<<<<< HEAD
 import net.luckperms.api.LuckPerms;
+=======
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+<<<<<<< HEAD
 import org.bukkit.plugin.RegisteredServiceProvider;
+=======
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.rabio.jeanCraftCore.Autre.ChangeDifficult;
@@ -27,6 +33,7 @@ public class Main extends JavaPlugin {
     private Player player;
     @Override
     public void onEnable() {
+<<<<<<< HEAD
         RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
         LuckPerms api = null;
         if (provider != null) {
@@ -34,6 +41,10 @@ public class Main extends JavaPlugin {
 
         }
         ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this, api);
+=======
+
+        ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this);
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
 
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -43,6 +54,7 @@ public class Main extends JavaPlugin {
 
         //la classe principal
         ChangeDifficult changeDifficult = new ChangeDifficult();
+<<<<<<< HEAD
         this.inventorypnj = new InventoryQuestionPnj(this, "");
 
         getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
@@ -51,6 +63,16 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(this.inventorypnj, this);
         getServer().getPluginManager().registerEvents(new PassageClassrom(this), this);
         getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this, this.inventorypnj), this);
+=======
+        this.inventorypnj = new InventoryQuestionPnj(this,"");
+        
+        getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this,this.inventorypnj), this);
+        getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
+        getServer().getPluginManager().registerEvents(this.inventorypnj, this);
+        getServer().getPluginManager().registerEvents(new PassageClassrom(this),this);
+        getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this,this.inventorypnj),this);
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
         // PluginCommand quizzCommand = Objects.requireNonNull(getCommand("quizz"), "La commande 'quizz' n'est pas définie dans plugin.yml !");
         //quizzCommand.setExecutor(new QuizzCommand(this));
         getCommand("quizz").setExecutor(new QuizzCommand(this));

@@ -1,8 +1,11 @@
 package fr.rabio.jeanCraftCore.manager;
 
 import fr.rabio.jeanCraftCore.Main;
+<<<<<<< HEAD
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.model.user.User;
+=======
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.*;
 
 import java.io.File;
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +26,18 @@ public class ScoreBoardManager implements Listener {
     public ScoreBoardManager(Main main, LuckPerms luckperms) {
         this.main = main;
         this.luckPerms = luckperms;
+=======
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ScoreBoardManager implements Listener {
+    public Main main;
+
+    public ScoreBoardManager(Main main) {
+        this.main = main;
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
     }
     public void createScoreboard(Player player) {
         File fileC = new File(main.getDataFolder(), "classement.yml");
@@ -59,6 +75,7 @@ public class ScoreBoardManager implements Listener {
         int player_online = Bukkit.getOnlinePlayers().size();
         // Création du scoreboard
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+<<<<<<< HEAD
         Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, "§f§lJeanCraft");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         User user = luckPerms.getUserManager().getUser(player.getUniqueId());
@@ -89,6 +106,24 @@ public class ScoreBoardManager implements Listener {
 
 
 
+=======
+        Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, "§d§lJeanCraft");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+
+        // Ajouter le nom et le classement du joueur
+        Score nameLine = objective.getScore("§6§lName : §e" + player.getName());
+        nameLine.setScore(5);
+        Score rankLine = objective.getScore("§6§lGrade : §r" + rank);
+        rankLine.setScore(4);
+
+        Score playerLine = objective.getScore("§6§lStudents : §e" + player_online + "§6/§e" + Bukkit.getMaxPlayers());
+        playerLine.setScore(3);
+
+        Score PointLine = objective.getScore("§6§lPoints :§e" + playerPoints);
+        PointLine.setScore(1);
+
+        Score ip = objective.getScore("§cplay.jeancraft.fr");
+>>>>>>> 404a238a1b808995c42390481064550b9fe35201
 
         // Appliquer le scoreboard au joueur
         player.setScoreboard(scoreboard);
