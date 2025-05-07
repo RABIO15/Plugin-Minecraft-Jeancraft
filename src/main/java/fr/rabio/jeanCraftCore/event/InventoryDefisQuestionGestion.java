@@ -24,7 +24,28 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class InventoryDefisQuestionGestion implements Listener {
+/*
 
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTTCHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+CHATTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+
+
+
+ */
 
 
     private final QuestionLoader questionLoader;
@@ -397,7 +418,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                 Map.Entry<String, List<String>> nextQuestion = nextQuestionss.get(0);
                 // Récupère la première question
-
+  
 
                 CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
@@ -412,7 +433,7 @@ public class InventoryDefisQuestionGestion implements Listener {
                 changingInventory.add(player);
                 complete = 1;
                 Q_q = 1;
-                
+                //ah
                 //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc 
 
             }else {

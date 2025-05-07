@@ -7,7 +7,7 @@ Defis1:
 
   Q11:
     - material: GOLD_INGOT
-      questionDefis: "combien font 4x4"
+      question: "combien font 4x4"
       answers: ["crapi", "crapiot", "1eee"]
 
   Q111:
