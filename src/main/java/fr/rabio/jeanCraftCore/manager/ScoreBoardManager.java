@@ -1,6 +1,8 @@
 package fr.rabio.jeanCraftCore.manager;
 
 import fr.rabio.jeanCraftCore.Main;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.model.user.User;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -16,9 +18,10 @@ import java.util.Map;
 
 public class ScoreBoardManager implements Listener {
     public Main main;
-
-    public ScoreBoardManager(Main main) {
+    public LuckPerms luckPerms;
+    public ScoreBoardManager(Main main, LuckPerms luckperms) {
         this.main = main;
+        this.luckPerms = luckperms;
     }
     public void createScoreboard(Player player) {
         File fileC = new File(main.getDataFolder(), "classement.yml");
@@ -58,20 +61,26 @@ public class ScoreBoardManager implements Listener {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("rank", Criteria.DUMMY, "§d§lJeanCraft");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
 
         // Ajouter le nom et le classement du joueur
         Score nameLine = objective.getScore("§6§lName : §e" + player.getName());
         nameLine.setScore(5);
-        Score rankLine = objective.getScore("§6§lGrade : §r" + rank);
+        Score rankLine = objective.getScore("§6§lGrade : §r" + user.getCachedData().getMetaData().getPrefix());
         rankLine.setScore(4);
 
-        Score playerLine = objective.getScore("§6§lStudents : §e" + player_online + "§6/§e" + Bukkit.getMaxPlayers());
+        Score playerLine = objective.getScore("§6§lStudents : §e" + player_online);
         playerLine.setScore(3);
 
         Score PointLine = objective.getScore("§6§lPoints :§e" + playerPoints);
         PointLine.setScore(1);
 
         Score ip = objective.getScore("§cplay.jeancraft.fr");
+
+
+
+
+
 
         // Appliquer le scoreboard au joueur
         player.setScoreboard(scoreboard);

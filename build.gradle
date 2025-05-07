@@ -15,11 +15,13 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+
 }
 
 dependencies {
     // Mise à jour de la version Paper API pour Minecraft 1.20
     compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("net.luckperms:api:5.4")
 }  
 
 def targetJavaVersion = 21 // Changement à Java 21 si vous utilisez cette version
