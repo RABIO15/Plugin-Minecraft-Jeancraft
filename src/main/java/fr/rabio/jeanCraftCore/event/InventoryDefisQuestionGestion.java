@@ -411,7 +411,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                 changingInventory.add(player);
                 complete = 1;
-                Q_q += 1;
+                Q_q = 1;
                 
                 //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc 
 
