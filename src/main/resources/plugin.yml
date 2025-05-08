@@ -1,22 +1,11 @@
-<<<<<<< HEAD
 name: MineQuizz
-=======
-name: s
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
 version: 1.0
 main: fr.rabio.jeanCraftCore.Main
 api-version: '1.21'
 description: Le plugin de Jean Craft
-<<<<<<< HEAD
 depend:
   - LuckPerms
 commands:
-=======
-commands:
-  chat:
-    description: Une commande de test
-    usage: /chat
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
   quizz:
     description: commande de quizz
     usage: /quizz
