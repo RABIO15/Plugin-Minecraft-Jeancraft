@@ -24,32 +24,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class InventoryDefisQuestionGestion implements Listener {
-<<<<<<< HEAD
 
-=======
-/*
-
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTTCHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-CHATTTTTTTTTTTTTTTTTTTTTTTTT
-
-
-
-
-
- */
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
 
 
     private final QuestionLoader questionLoader;
@@ -186,93 +161,93 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
 
 
-    if(ByPass_NextQuestionIsEmpty) {
+        if(ByPass_NextQuestionIsEmpty) {
 
 
-    player.sendMessage("§1 bypassnextquestionisemty est sur truee");
-    //y a un truc avec le subject qui mal redéfini après faut faire des tester 24/04/25
-    player.sendMessage("Le subject et ))" + subject);
+            player.sendMessage("§1 bypassnextquestionisemty est sur truee");
+            //y a un truc avec le subject qui mal redéfini après faut faire des tester 24/04/25
+            player.sendMessage("Le subject et ))" + subject);
 
-    List<Map.Entry<String, List<String>>> nextQuestions = questionLoader.getQuestionsDefis(subject,"Q1",player);
-        player.sendMessage("§b NextQuestionn initier 1 er " );
+            List<Map.Entry<String, List<String>>> nextQuestions = questionLoader.getQuestionsDefis(subject,"Q1",player);
+            player.sendMessage("§b NextQuestionn initier 1 er " );
 
-    if (!nextQuestions.isEmpty()) {
-
-
-        player.sendMessage("Bravo 1 ");
-
-        if (!hasCompletedQuiz(player, subject)) {
-
-            complete = 1;
-            player.sendMessage("Le subject et$$ " + subject);
+            if (!nextQuestions.isEmpty()) {
 
 
-            Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(0); // Récupère la première question
+                player.sendMessage("Bravo 1 ");
+
+                if (!hasCompletedQuiz(player, subject)) {
+
+                    complete = 1;
+                    player.sendMessage("Le subject et$$ " + subject);
 
 
-           //y a     peut etre un truc 01/05/25 verifier avec lautre classe
-            player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
-
-            CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
-
-            //on instancie la classe
-            player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
-
-            df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
-
-            player.sendMessage("L'inventaire à til etait crée?  " );
-            player.sendMessage("§4 le Q_q est " +  Q_q);
-
-           // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
+                    Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(0); // Récupère la première question
 
 
-        } else {
-            player.sendMessage("Vous avez d..éjà fait ce quizz............ ");
+                    //y a     peut etre un truc 01/05/25 verifier avec lautre classe
+                    player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
 
-            GestionInvetory gstinv = new GestionInvetory(main, player);
+                    CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
+
+                    //on instancie la classe
+                    player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
+
+                    df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
+
+                    player.sendMessage("L'inventaire à til etait crée?  " );
+                    player.sendMessage("§4 le Q_q est " +  Q_q);
+
+                    // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
 
 
-            gstinv.On_Inventory_Difficult(player);
-            player.closeInventory();
-            //je crois on tien un truc par la de gros qui fous la merde qui ferme l'inventaire mais il se reouvrte un truc du genre
-            //ce qui fous la merde a regarder 04/05/25
+                } else {
+                    player.sendMessage("Vous avez d..éjà fait ce quizz............ ");
 
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
-            player.sendMessage("Vous avez déjà fait ce quizz ");
+                    GestionInvetory gstinv = new GestionInvetory(main, player);
 
-            player.sendMessage("Le subject et " + subject);
-            ByPass_NextQuestionIsEmpty = false;
-            player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false");
 
+                    gstinv.On_Inventory_Difficult(player);
+                    player.closeInventory();
+                    //je crois on tien un truc par la de gros qui fous la merde qui ferme l'inventaire mais il se reouvrte un truc du genre
+                    //ce qui fous la merde a regarder 04/05/25
+
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+                    player.sendMessage("Vous avez déjà fait ce quizz ");
+
+                    player.sendMessage("Le subject et " + subject);
+                    ByPass_NextQuestionIsEmpty = false;
+                    player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false");
+
+                }
+
+
+
+                //player.sendMessage("§2 le truc s'appel attention :" + difficulté + "Notre sujet est" + subject);
+            } else {
+                player.sendMessage("Vous avez terminé toutes les questions !AAAAAAAAAAAAA");
+
+                GestionInvetory gstinv = new GestionInvetory(main, player);
+                ByPass_NextQuestionIsEmpty = false;
+                player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false**");
+
+                player.closeInventory();
+
+
+                player.sendMessage("Vous avez terminé toutes les questions !AAAAAAAAAAAAA");
+
+
+            }
+
+        }else{
+
+            player.sendMessage(" La valeur BypasseNextquestionIsEmpty et sur false");
         }
-
-
-
-        //player.sendMessage("§2 le truc s'appel attention :" + difficulté + "Notre sujet est" + subject);
-    } else {
-        player.sendMessage("Vous avez terminé toutes les questions !AAAAAAAAAAAAA");
-
-        GestionInvetory gstinv = new GestionInvetory(main, player);
-        ByPass_NextQuestionIsEmpty = false;
-        player.sendMessage("§9 La valeur BypasseNextquestionIsEmpty à été mis sur  false**");
-
-        player.closeInventory();
-
-
-        player.sendMessage("Vous avez terminé toutes les questions !AAAAAAAAAAAAA");
-
-
-    }
-
-}else{
-
-    player.sendMessage(" La valeur BypasseNextquestionIsEmpty et sur false");
-}
 
 
     }
@@ -299,7 +274,7 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
         if (itemMeta == null || !itemMeta.hasDisplayName()) {
             return; // Pareil, on évite d'aller plus loin si le meta est null
-        }  
+        }
 
         String itemName = itemMeta.getDisplayName();
 
@@ -400,7 +375,6 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
             if(Q_q == 1) {
                 player.sendMessage("Un ajout à été effectuer");
                 questionKeyBuilder.append('1');
-                
                 player.sendMessage("§4 le Q_q est " +  Q_q);
             }else{
                 player.sendMessage("Petite erreur qui empeche l'ajout de 1 au Q11 ");
@@ -422,31 +396,21 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
                 Map.Entry<String, List<String>> nextQuestion = nextQuestionss.get(0);
                 // Récupère la première question
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
-
                 CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
                 player.sendMessage("3 verfi la key est " + nextQuestion.getKey() +"et  .la valeur est "+ nextQuestion.getValue());
 
                 df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
-  
+
 
                 player.sendMessage("H" + nextQuestionKey);//il ets la fdp de merde de bug
                 player.sendMessage("3 verfi" + nextQuestion.getKey() +"et  ....."+ nextQuestion.getValue());
 
                 changingInventory.add(player);
                 complete = 1;
-                Q_q = 1;
-<<<<<<< HEAD
-                
-=======
-                //ah
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
-                //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc 
+                Q_q += 1;
+
+                //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc
 
             }else {
 
@@ -494,32 +458,32 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
         }else {
 
-    if(complete == 1) {
-        reset(player);
-        changingInventory.remove(player);
-        BlockQuestion(player, subject);
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
-        player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+            if(complete == 1) {
+                reset(player);
+                changingInventory.remove(player);
+                BlockQuestion(player, subject);
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
+                player.sendMessage("Bravo  tout et terminer renitialisation des quizz ");
 
-        player.sendMessage("////Le subject et " + subject);
+                player.sendMessage("////Le subject et " + subject);
 
-    }else{
-        player.sendMessage("toujours non 2 ");
-        player.sendMessage("////Le subject et " + subject);
-    }
+            }else{
+                player.sendMessage("toujours non 2 ");
+                player.sendMessage("////Le subject et " + subject);
+            }
             player.sendMessage("§4 appel de verfication et l'inventaire est vide  ");
 
 
         }
 
 
-            //verifier le return 04/05/25
+        //verifier le return 04/05/25
         player.sendMessage("Le return est " + nextQuestionKey + "qui correspond au truc Q1 / Q11 etc...");
         return nextQuestionKey;
     }
@@ -532,7 +496,7 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
         if(changingInventory.contains(player)) {
             player.sendMessage("aie aie");
-                //reset(player); //21/04/25 y a un soucis ici quand on change de inventaire le cette fonction s'active ce qui fait voila ça reset et ça fair BUGG
+            //reset(player); //21/04/25 y a un soucis ici quand on change de inventaire le cette fonction s'active ce qui fait voila ça reset et ça fair BUGG
         }
     }
 
@@ -556,7 +520,7 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
     }
 
-  
+
 
 
     public void reset(Player player) {
@@ -633,7 +597,7 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
         String path = "players." + player.getUniqueId() + "." + subject;
         playerData.set(path, true);
         savePlayerData();
-  
+
 
     }
 
@@ -650,5 +614,4 @@ CHATTTTTTTTTTTTTTTTTTTTTTTTT
 
 
 }
-
 

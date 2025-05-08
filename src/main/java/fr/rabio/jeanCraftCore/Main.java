@@ -1,92 +1,76 @@
 package fr.rabio.jeanCraftCore;
 
-
 import fr.rabio.jeanCraftCore.commands.Classement;
+import fr.rabio.jeanCraftCore.commands.QuizzCommand;
 import fr.rabio.jeanCraftCore.event.*;
 import fr.rabio.jeanCraftCore.manager.ScoreBoardManager;
-<<<<<<< HEAD
+import fr.rabio.jeanCraftCore.Autre.ChangeDifficult;
 import net.luckperms.api.LuckPerms;
-=======
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-<<<<<<< HEAD
 import org.bukkit.plugin.RegisteredServiceProvider;
-=======
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
 import org.bukkit.plugin.java.JavaPlugin;
-
-import fr.rabio.jeanCraftCore.Autre.ChangeDifficult;
-
-import fr.rabio.jeanCraftCore.commands.QuizzCommand;
 
 import java.io.File;
 
-
 public class Main extends JavaPlugin {
 
-    private InventoryQuestionPnj inventorypnj;
+    private InventoryQuestionPnj inventoryPnj;
     private FileConfiguration playerData;
     private File playerDataFile;
-    private Player player;
+
     @Override
     public void onEnable() {
-<<<<<<< HEAD
-        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
-        LuckPerms api = null;
-        if (provider != null) {
-            api = provider.getProvider();
-
-        }
-        ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this, api);
-=======
-
-        ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this);
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
-
+        // Initialisation de LuckPerms si disponible
+        LuckPerms luckPermsApi = setupLuckPerms();
+        // Initialisation du gestionnaire de tableaux de score
+        ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this, luckPermsApi);
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 scoreBoardManager.createScoreboard(player);
             }
-        }, 0L, 100L);
 
-        //la classe principal
+        }, 0L, 20L);
+
+        // Initialisation des fonctionnalités
         ChangeDifficult changeDifficult = new ChangeDifficult();
-<<<<<<< HEAD
-        this.inventorypnj = new InventoryQuestionPnj(this, "");
+        this.inventoryPnj = new InventoryQuestionPnj(this, "");
 
-        getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
-        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this, this.inventorypnj), this);
-        getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
-        getServer().getPluginManager().registerEvents(this.inventorypnj, this);
-        getServer().getPluginManager().registerEvents(new PassageClassrom(this), this);
-        getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this, this.inventorypnj), this);
-=======
-        this.inventorypnj = new InventoryQuestionPnj(this,"");
-        
-        getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
-        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this,this.inventorypnj), this);
-        getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
-        getServer().getPluginManager().registerEvents(this.inventorypnj, this);
-        getServer().getPluginManager().registerEvents(new PassageClassrom(this),this);
-        getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this,this.inventorypnj),this);
->>>>>>> 404a238a1b808995c42390481064550b9fe35201
-        // PluginCommand quizzCommand = Objects.requireNonNull(getCommand("quizz"), "La commande 'quizz' n'est pas définie dans plugin.yml !");
-        //quizzCommand.setExecutor(new QuizzCommand(this));
+        // Enregistrement des événements
+        registerEvents(changeDifficult);
+
+        // Enregistrement des commandes
         getCommand("quizz").setExecutor(new QuizzCommand(this));
         getCommand("classement").setExecutor(new Classement(this));
+
+        // Chargement des données des joueurs
         loadPlayerData();
     }
 
     @Override
-    public void onDisable() {}
+    public void onDisable() {
+        // Actions lors de la désactivation du plugin si nécessaire
+    }
 
-    public void loadPlayerData() {
+    private LuckPerms setupLuckPerms() {
+        RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
+        return provider != null ? provider.getProvider() : null;
+    }
+
+    private void registerEvents(ChangeDifficult changeDifficult) {
+        getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this, this.inventoryPnj), this);
+        getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
+        getServer().getPluginManager().registerEvents(this.inventoryPnj, this);
+        getServer().getPluginManager().registerEvents(new PassageClassrom(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryDefisQuestionGestion(this, this.inventoryPnj), this);
+    }
+
+    private void loadPlayerData() {
         playerDataFile = new File(getDataFolder(), "player_data.yml");
         if (!playerDataFile.exists()) {
-
             saveResource("player_data.yml", false);
         }
         playerData = YamlConfiguration.loadConfiguration(playerDataFile);
